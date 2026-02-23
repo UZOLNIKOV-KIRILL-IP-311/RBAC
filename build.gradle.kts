@@ -17,4 +17,6 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+    forkEvery = 0 // Run tests in the same process
+    maxParallelForks = 1
 }
