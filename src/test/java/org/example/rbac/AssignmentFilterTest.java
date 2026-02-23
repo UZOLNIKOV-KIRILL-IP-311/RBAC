@@ -194,9 +194,7 @@ class AssignmentFilterTest {
 
     @Test
     void testAssignedAfterInvalidFormat() {
-        AssignmentFilter filter = AssignmentFilters.assignedAfter("invalid-date");
-        PermanentAssignment assignment = new PermanentAssignment(user1, role1, metadata1);
-        assertFalse(filter.test(assignment));
+        assertThrows(IllegalArgumentException.class, () -> AssignmentFilters.assignedAfter("invalid-date"));
     }
 
     @Test
@@ -206,8 +204,6 @@ class AssignmentFilterTest {
 
     @Test
     void testExpiringBeforeInvalidFormat() {
-        AssignmentFilter filter = AssignmentFilters.expiringBefore("invalid-date");
-        TemporaryAssignment assignment = new TemporaryAssignment(user1, role1, metadata1, "2026-06-30 23:59");
-        assertFalse(filter.test(assignment));
+        assertThrows(IllegalArgumentException.class, () -> AssignmentFilters.expiringBefore("invalid-date"));
     }
 }

@@ -1,0 +1,7 @@
+org\example\manager\AssignmentManagerTest.class
+org\example\rbac\RoleFilterTest.class
+org\example\rbac\AssignmentFilterTest.class
+org\example\rbac\UserFilterTest.class
+org\example\manager\RoleManagerTest.class
+org\example\rbac\SortersTest.class
+org\example\manager\UserManagerTest.class

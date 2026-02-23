@@ -39,7 +39,6 @@ class RoleFilterTest {
     @Test
     void testByNameContains() {
         RoleFilter filter = RoleFilters.byNameContains("er");
-        assertTrue(filter.test(role1)); // Admin -> contains 'er'? No
         assertFalse(filter.test(role1)); // Admin doesn't contain 'er'
         assertTrue(filter.test(role2)); // Viewer contains 'er'
         assertTrue(filter.test(role3)); // Moderator contains 'er'

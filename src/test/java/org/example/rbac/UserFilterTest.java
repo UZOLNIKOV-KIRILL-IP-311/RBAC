@@ -59,7 +59,7 @@ class UserFilterTest {
 
     @Test
     void testAndCombination() {
-        UserFilter filter1 = UserFilters.byUsernameContains("o");
+        UserFilter filter1 = UserFilters.byUsernameContains("john");
         UserFilter filter2 = UserFilters.byEmailDomain("example.com");
         UserFilter combined = filter1.and(filter2);
 
