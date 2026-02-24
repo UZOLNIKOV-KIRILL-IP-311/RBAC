@@ -1,0 +1,39 @@
+image: eclipse-temurin:21
+
+stages:
+  - build
+  - test
+
+variables:
+  MAVEN_OPTS: "-Dmaven.repo.local=.m2"
+  MAVEN_CLI_OPTS: "--batch-mode --no-transfer-progress"
+
+cache:
+  key: "$CI_COMMIT_REF_SLUG"
+  paths:
+    - .m2/
+    - target/
+
+build:
+  stage: build
+  script:
+    - ./mvnw.cmd clean compile $MAVEN_CLI_OPTS
+  artifacts:
+    paths:
+      - target/
+    expire_in: 1 week
+
+test:
+  stage: test
+  script:
+    - ./mvnw.cmd test $MAVEN_CLI_OPTS
+  dependencies:
+    - build
+  coverage: '/Total:\s+\d+.*Failures:\s+(\d+).*Errors:\s+(\d+)/'
+  artifacts:
+    when: always
+    reports:
+      junit: target/surefire-reports/TEST-*.xml
+    paths:
+      - target/surefire-reports/
+    expire_in: 1 week
