@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="org.example.manager.RoleManagerTest" time="0.051" tests="18" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="org.example.util.ValidationUtilsTest" time="0.018" tests="8" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="25"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -63,22 +63,12 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="69.0"/>
   </properties>
-  <testcase name="testFindByFilter" classname="org.example.manager.RoleManagerTest" time="0.006"/>
-  <testcase name="testAddRole" classname="org.example.manager.RoleManagerTest" time="0.001"/>
-  <testcase name="testFindAll" classname="org.example.manager.RoleManagerTest" time="0.001"/>
-  <testcase name="testClear" classname="org.example.manager.RoleManagerTest" time="0.002"/>
-  <testcase name="testCount" classname="org.example.manager.RoleManagerTest" time="0.001"/>
-  <testcase name="testRemovePermissionFromRole" classname="org.example.manager.RoleManagerTest" time="0.001"/>
-  <testcase name="testFindByName" classname="org.example.manager.RoleManagerTest" time="0.001"/>
-  <testcase name="testAddPermissionToNonExistentRole" classname="org.example.manager.RoleManagerTest" time="0.002"/>
-  <testcase name="testAddPermissionToRole" classname="org.example.manager.RoleManagerTest" time="0.001"/>
-  <testcase name="testFindById" classname="org.example.manager.RoleManagerTest" time="0.001"/>
-  <testcase name="testFindAllWithFilterAndSorter" classname="org.example.manager.RoleManagerTest" time="0.004"/>
-  <testcase name="testFindRolesWithPermission" classname="org.example.manager.RoleManagerTest" time="0.002"/>
-  <testcase name="testRemoveRole" classname="org.example.manager.RoleManagerTest" time="0.002"/>
-  <testcase name="testRemoveNonExistentRole" classname="org.example.manager.RoleManagerTest" time="0.001"/>
-  <testcase name="testAddNullRole" classname="org.example.manager.RoleManagerTest" time="0.003"/>
-  <testcase name="testExists" classname="org.example.manager.RoleManagerTest" time="0.001"/>
-  <testcase name="testEqualsAndHashCode" classname="org.example.manager.RoleManagerTest" time="0.002"/>
-  <testcase name="testAddDuplicateRole" classname="org.example.manager.RoleManagerTest" time="0.001"/>
+  <testcase name="testRequireNonEmpty" classname="org.example.util.ValidationUtilsTest" time="0.006"/>
+  <testcase name="testIsValidDateTime" classname="org.example.util.ValidationUtilsTest" time="0.001"/>
+  <testcase name="testIsValidEmail" classname="org.example.util.ValidationUtilsTest" time="0.001"/>
+  <testcase name="testIsValidDate" classname="org.example.util.ValidationUtilsTest" time="0.0"/>
+  <testcase name="testRequireNonNull" classname="org.example.util.ValidationUtilsTest" time="0.001"/>
+  <testcase name="testIsNonEmpty" classname="org.example.util.ValidationUtilsTest" time="0.0"/>
+  <testcase name="testIsValidUsername" classname="org.example.util.ValidationUtilsTest" time="0.0"/>
+  <testcase name="testNormalizeString" classname="org.example.util.ValidationUtilsTest" time="0.001"/>
 </testsuite>

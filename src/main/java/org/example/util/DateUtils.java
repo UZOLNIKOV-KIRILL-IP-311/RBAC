@@ -294,7 +294,7 @@ public class DateUtils {
                     return months + " month" + (months > 1 ? "s" : "") + " ago";
                 }
             }
-        } catch (DateTimeParseException e) {
+        } catch (IllegalArgumentException e) {
             return date;
         }
     }
@@ -350,13 +350,13 @@ public class DateUtils {
      * @return true, если дата валидна
      */
     public static boolean isValidDate(String date) {
-        if (date == null) {
+        if (date == null || date.trim().isEmpty()) {
             return false;
         }
         try {
-            parseDate(date);
+            LocalDate.parse(date.trim(), DATE_FORMATTER);
             return true;
-        } catch (DateTimeParseException e) {
+        } catch (java.time.format.DateTimeParseException e) {
             return false;
         }
     }
@@ -368,13 +368,13 @@ public class DateUtils {
      * @return true, если дата и время валидны
      */
     public static boolean isValidDateTime(String dateTime) {
-        if (dateTime == null) {
+        if (dateTime == null || dateTime.trim().isEmpty()) {
             return false;
         }
         try {
-            parseDateTime(dateTime);
+            LocalDateTime.parse(dateTime.trim(), DATE_TIME_MINUTE_FORMATTER);
             return true;
-        } catch (DateTimeParseException e) {
+        } catch (java.time.format.DateTimeParseException e) {
             return false;
         }
     }
@@ -389,7 +389,11 @@ public class DateUtils {
         if (date == null) {
             throw new IllegalArgumentException("Date cannot be null");
         }
-        return LocalDate.parse(date.trim(), DATE_FORMATTER);
+        try {
+            return LocalDate.parse(date.trim(), DATE_FORMATTER);
+        } catch (java.time.format.DateTimeParseException e) {
+            throw new IllegalArgumentException("Invalid date format: " + date + ". Expected: YYYY-MM-DD", e);
+        }
     }
 
     /**
@@ -402,7 +406,11 @@ public class DateUtils {
         if (dateTime == null) {
             throw new IllegalArgumentException("DateTime cannot be null");
         }
-        return LocalDateTime.parse(dateTime.trim(), DATE_TIME_MINUTE_FORMATTER);
+        try {
+            return LocalDateTime.parse(dateTime.trim(), DATE_TIME_MINUTE_FORMATTER);
+        } catch (java.time.format.DateTimeParseException e) {
+            throw new IllegalArgumentException("Invalid datetime format: " + dateTime + ". Expected: YYYY-MM-DD HH:MM", e);
+        }
     }
 
     /**
@@ -438,7 +446,7 @@ public class DateUtils {
         try {
             LocalDate localDate = parseDate(date);
             return localDate.getDayOfWeek().toString();
-        } catch (DateTimeParseException e) {
+        } catch (IllegalArgumentException e) {
             return "Unknown";
         }
     }

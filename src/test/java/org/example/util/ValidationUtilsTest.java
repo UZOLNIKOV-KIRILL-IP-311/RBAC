@@ -14,6 +14,7 @@ class ValidationUtilsTest {
         assertTrue(ValidationUtils.isValidUsername("test_user_name"));
         assertTrue(ValidationUtils.isValidUsername("validuser"));
         assertTrue(ValidationUtils.isValidUsername("a".repeat(20)));
+        assertTrue(ValidationUtils.isValidUsername("USER")); // uppercase is valid
 
         // Invalid usernames
         assertFalse(ValidationUtils.isValidUsername(null));
@@ -23,7 +24,6 @@ class ValidationUtilsTest {
         assertFalse(ValidationUtils.isValidUsername("user name")); // contains space
         assertFalse(ValidationUtils.isValidUsername("user@name")); // contains @
         assertFalse(ValidationUtils.isValidUsername("user-name")); // contains -
-        assertFalse(ValidationUtils.isValidUsername("USER")); // uppercase only (actually valid)
     }
 
     @Test

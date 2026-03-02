@@ -29,6 +29,10 @@ public class ValidationUtils {
         if (username == null || username.trim().isEmpty()) {
             return false;
         }
+        // Проверяем, что строка не содержит пробелов
+        if (username.contains(" ")) {
+            return false;
+        }
         return USERNAME_PATTERN.matcher(username).matches();
     }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="org.example.rbac.RoleFilterTest" time="0.027" tests="14" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="org.example.rbac.RoleFilterTest" time="0.032" tests="14" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="25"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -16,7 +16,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="RU"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-25.0.2\bin"/>
-    <property name="sun.java.command" value="org.apache.maven.wrapper.MavenWrapperMain test"/>
+    <property name="sun.java.command" value="org.apache.maven.wrapper.MavenWrapperMain clean test"/>
     <property name="jdk.debug" value="release"/>
     <property name="maven.home" value="C:\Users\Кирилл\.m2\wrapper\dists\apache-maven-3.9.6-bin\3311e1d4\apache-maven-3.9.6"/>
     <property name="surefire.test.class.path" value="c:\Users\Кирилл\OpenideProjects\untitled2\target\test-classes;c:\Users\Кирилл\OpenideProjects\untitled2\target\classes;C:\Users\Кирилл\.m2\repository\org\junit\jupiter\junit-jupiter\5.10.0\junit-jupiter-5.10.0.jar;C:\Users\Кирилл\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.0\junit-jupiter-api-5.10.0.jar;C:\Users\Кирилл\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\Кирилл\.m2\repository\org\junit\platform\junit-platform-commons\1.10.0\junit-platform-commons-1.10.0.jar;C:\Users\Кирилл\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\Кирилл\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.0\junit-jupiter-params-5.10.0.jar;C:\Users\Кирилл\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.0\junit-jupiter-engine-5.10.0.jar;C:\Users\Кирилл\.m2\repository\org\junit\platform\junit-platform-engine\1.10.0\junit-platform-engine-1.10.0.jar;"/>
@@ -64,15 +64,15 @@
     <property name="java.class.version" value="69.0"/>
   </properties>
   <testcase name="testHasPermissionNull" classname="org.example.rbac.RoleFilterTest" time="0.002"/>
-  <testcase name="testOrCombination" classname="org.example.rbac.RoleFilterTest" time="0.001"/>
+  <testcase name="testOrCombination" classname="org.example.rbac.RoleFilterTest" time="0.002"/>
   <testcase name="testByNameContainsNull" classname="org.example.rbac.RoleFilterTest" time="0.001"/>
   <testcase name="testOrWithNull" classname="org.example.rbac.RoleFilterTest" time="0.001"/>
   <testcase name="testHasPermissionByNameAndResource" classname="org.example.rbac.RoleFilterTest" time="0.001"/>
   <testcase name="testHasAtLeastNPermissionsNegative" classname="org.example.rbac.RoleFilterTest" time="0.001"/>
-  <testcase name="testHasPermissionByNameAndResourceNull" classname="org.example.rbac.RoleFilterTest" time="0.001"/>
+  <testcase name="testHasPermissionByNameAndResourceNull" classname="org.example.rbac.RoleFilterTest" time="0.002"/>
   <testcase name="testByNameNull" classname="org.example.rbac.RoleFilterTest" time="0.001"/>
   <testcase name="testAndWithNull" classname="org.example.rbac.RoleFilterTest" time="0.001"/>
-  <testcase name="testAndCombination" classname="org.example.rbac.RoleFilterTest" time="0.001"/>
+  <testcase name="testAndCombination" classname="org.example.rbac.RoleFilterTest" time="0.002"/>
   <testcase name="testByNameContains" classname="org.example.rbac.RoleFilterTest" time="0.001"/>
   <testcase name="testByName" classname="org.example.rbac.RoleFilterTest" time="0.001"/>
   <testcase name="testHasAtLeastNPermissions" classname="org.example.rbac.RoleFilterTest" time="0.001"/>
