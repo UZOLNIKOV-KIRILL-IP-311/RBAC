@@ -17,6 +17,7 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
-    forkEvery = 0 // Run tests in the same process
+    forkEvery = 0
     maxParallelForks = 1
+    jvmArgs = listOf("-Xmx512m")
 }

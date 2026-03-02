@@ -59,6 +59,7 @@ public abstract class AbstractRoleAssignment implements RoleAssignment {
         return Objects.hash(assignmentId);
     }
 
+    @Override
     public String summary() {
         StringBuilder sb = new StringBuilder();
         sb.append("[").append(assignmentType()).append("] ")
@@ -66,13 +67,13 @@ public abstract class AbstractRoleAssignment implements RoleAssignment {
           .append(user.username()).append(" by ")
           .append(metadata.assignedBy()).append(" at ")
           .append(metadata.assignedAt()).append("\n");
-        
+
         if (metadata.reason() != null && !metadata.reason().isEmpty()) {
             sb.append("Reason: ").append(metadata.reason()).append("\n");
         }
-        
+
         sb.append("Status: ").append(isActive() ? "ACTIVE" : "INACTIVE");
-        
+
         return sb.toString();
     }
 }
