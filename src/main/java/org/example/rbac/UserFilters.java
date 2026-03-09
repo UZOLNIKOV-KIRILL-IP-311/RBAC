@@ -27,6 +27,13 @@ public class UserFilters {
         return user -> email.equals(user.email());
     }
 
+    public static UserFilter byEmailContains(String substring) {
+        if (substring == null) {
+            throw new IllegalArgumentException("Substring cannot be null");
+        }
+        return user -> user.email().toLowerCase().contains(substring.toLowerCase());
+    }
+
     public static UserFilter byEmailDomain(String domain) {
         if (domain == null) {
             throw new IllegalArgumentException("Domain cannot be null");
