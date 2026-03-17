@@ -5,6 +5,7 @@ import org.example.manager.RoleManager;
 import org.example.manager.UserManager;
 import org.example.rbac.*;
 import org.example.util.*;
+import org.example.audit.AuditLog;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -659,14 +660,33 @@ public class CommandRegistry {
 
         parser.registerCommand("save", "Save data to file", (scanner, system) -> {
             String filename = ConsoleUtils.promptString(scanner, "Filename [rbac-data.ser]: ", "rbac-data.ser");
-            // Simple serialization placeholder
-            ConsoleUtils.printInfo("Save functionality - placeholder. Data persistence not fully implemented.");
+            ConsoleUtils.printInfo("Save functionality - placeholder.");
         });
 
         parser.registerCommand("load", "Load data from file", (scanner, system) -> {
             String filename = ConsoleUtils.promptString(scanner, "Filename [rbac-data.ser]: ", "rbac-data.ser");
-            // Simple deserialization placeholder
-            ConsoleUtils.printInfo("Load functionality - placeholder. Data persistence not fully implemented.");
+            ConsoleUtils.printInfo("Load functionality - placeholder.");
+        });
+
+        // Audit log commands
+        parser.registerCommand("audit-log", "View audit log", (scanner, system) -> {
+            System.out.println("\n=== Audit Log ===");
+            List<AuditLog.AuditEntry> entries = system.getAuditLog().getAll();
+            if (entries.isEmpty()) {
+                System.out.println("No audit entries.");
+                return;
+            }
+            for (AuditLog.AuditEntry entry : entries) {
+                System.out.printf("[%s] %s | %s | %s | %s%n",
+                    entry.timestamp(), entry.action(), entry.performer(), entry.target(), entry.details());
+            }
+            System.out.println("\nTotal: " + entries.size() + " entries");
+        });
+
+        parser.registerCommand("audit-save", "Save audit log to file", (scanner, system) -> {
+            String filename = ConsoleUtils.promptString(scanner, "Filename [audit-log.txt]: ", "audit-log.txt");
+            system.getAuditLog().saveToFile(filename);
+            ConsoleUtils.printSuccess("Audit log saved to: " + filename);
         });
     }
 }

@@ -4,6 +4,7 @@ import org.example.manager.AssignmentManager;
 import org.example.manager.RoleManager;
 import org.example.manager.UserManager;
 import org.example.rbac.*;
+import org.example.audit.AuditLog;
 
 /**
  * Главная система RBAC, содержащая все менеджеры.
@@ -13,12 +14,14 @@ public class RBACSystem {
     private final UserManager userManager;
     private final RoleManager roleManager;
     private final AssignmentManager assignmentManager;
+    private final AuditLog auditLog;
     private String currentUser;
 
     public RBACSystem() {
         this.userManager = new UserManager();
         this.roleManager = new RoleManager();
         this.assignmentManager = new AssignmentManager(userManager, roleManager);
+        this.auditLog = new AuditLog();
         this.currentUser = "system";
     }
 
@@ -32,6 +35,10 @@ public class RBACSystem {
 
     public AssignmentManager getAssignmentManager() {
         return assignmentManager;
+    }
+
+    public AuditLog getAuditLog() {
+        return auditLog;
     }
 
     public String getCurrentUser() {
@@ -87,28 +94,41 @@ public class RBACSystem {
         viewerRole.addPermission(readReports);
 
         roleManager.add(adminRole);
+        auditLog.log("CREATE_ROLE", currentUser, "Admin", "System administrator role created");
+        
         roleManager.add(managerRole);
+        auditLog.log("CREATE_ROLE", currentUser, "Manager", "Manager role created");
+        
         roleManager.add(viewerRole);
+        auditLog.log("CREATE_ROLE", currentUser, "Viewer", "Viewer role created");
 
         // Создаём администратора
         User admin = User.create("admin", "System Administrator", "admin@company.com");
         userManager.add(admin);
+        auditLog.log("CREATE_USER", currentUser, "admin", "System administrator user created");
 
         // Назначаем роль Admin администратору
         AssignmentMetadata metadata = AssignmentMetadata.now("system", "Initial system setup");
         PermanentAssignment adminAssignment = new PermanentAssignment(admin, adminRole, metadata);
         assignmentManager.add(adminAssignment);
+        auditLog.log("ASSIGN_ROLE", currentUser, "admin", "Assigned Admin role");
 
         // Создаём тестовых пользователей
         User manager = User.create("manager", "John Manager", "manager@company.com");
         userManager.add(manager);
+        auditLog.log("CREATE_USER", currentUser, "manager", "Manager user created");
+        
         PermanentAssignment managerAssignment = new PermanentAssignment(manager, managerRole, metadata);
         assignmentManager.add(managerAssignment);
+        auditLog.log("ASSIGN_ROLE", currentUser, "manager", "Assigned Manager role");
 
         User viewer = User.create("viewer", "Jane Viewer", "viewer@company.com");
         userManager.add(viewer);
+        auditLog.log("CREATE_USER", currentUser, "viewer", "Viewer user created");
+        
         PermanentAssignment viewerAssignment = new PermanentAssignment(viewer, viewerRole, metadata);
         assignmentManager.add(viewerAssignment);
+        auditLog.log("ASSIGN_ROLE", currentUser, "viewer", "Assigned Viewer role");
     }
 
     /**
