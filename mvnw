@@ -1,0 +1,3 @@
+#!/bin/sh
+cd "$(dirname "$0")"
+java -cp .mvn/wrapper/maven-wrapper.jar org.apache.maven.wrapper.MavenWrapperMain "$@"
